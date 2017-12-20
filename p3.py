@@ -2,7 +2,7 @@
 import math
 import sys
 import numpy as np
-
+from statistics import mean
 
 N = 1000
 i = 0
@@ -11,9 +11,10 @@ passing = 0
 def generate():
     u = math.floor(np.random.uniform(1, 21))
     #print(u)
-    ex1 = 4*.5*.6 + 3*.3*.6 + 2*.2*.6
-    ex2 = 3*.1*.4 + 2*.3*.4 + 1*.4*.4
-    X = ex1 + ex2
+    ex1 = 4*.5 + 3*.3 + 2*.2
+    ex2 = 3*.1 + 2*.3 + 1*.4
+    X = u*ex1 + u*ex2
+    #print(X)
     if X > 50:
         return 1
     else:
@@ -24,7 +25,7 @@ def sim():
     n = 1
     t = 2.63
     v = 0
-    while(n < 100 or 0.03 < (t/math.sqrt(n-1))):
+    while(n < 100):# or 0.03 < (t/math.sqrt(n-1))):
         x = generate()
         n += 1
         d = x - x_bar
@@ -34,10 +35,11 @@ def sim():
     return x_bar
 
 
-
+Y = []
 while i < N:
     y =  sim() # probability of passing
-    if y > 50:
-        passing +=1
+    print(i, y)
+    i +=1
+    Y.append(y)
 
-print(passing)
+print(mean(Y))
