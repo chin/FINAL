@@ -75,8 +75,8 @@ print( "Sample standard deviation of remaining cards: ", stdev(rem) )
 
 n, bins, patches = plt.hist(rem, bins='auto', normed=True)
 #y = mlab.normpdf(bins, mean(rem), stdev(rem)**2)
-avg = np.mean(rem)
-var= np.var(rem)
+avg = mean(rem)
+var= stdev(rem)**2
 pdf_x = np.linspace(np.min(rem), np.max(rem), 100)
 pdf_y = 1.0/np.sqrt(2*np.pi*var)*np.exp(-0.5*(pdf_x-avg)**2/var)
 
