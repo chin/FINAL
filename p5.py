@@ -8,6 +8,9 @@ from statistics import stdev
 import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
+from scipy.stats import norm
+import matplotlib.mlab as mlab
+
 
 N = 1000 #number of simulations
 
@@ -67,9 +70,12 @@ rem.sort()
 print( "Sample mean of remaining cards: ", mean(rem) )
 print( "Sample standard deviation of remaining cards: ", stdev(rem) )
     
-#N, bins = np.histogram(rem)
-#fig = plt.figure()
-plt.hist(rem, normed=True, bins='auto')
+(mu, sigma) = norm.fit(rem)
+
+plt.hist(rem, bins='auto')
+y = mlab.normpdf(18, mu, sigma)
+l =plt.plot(18, y, 'r--', linewidth=2)
+
 plt.title('Histogram of cards remaining')
 plt.xlabel('No. Cards Remaining')
 plt.ylabel('Frequency')
