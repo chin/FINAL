@@ -67,13 +67,14 @@ while n < N:
     n += 1
 
 rem.sort()
+
 print( "Sample mean of remaining cards: ", mean(rem) )
 print( "Sample standard deviation of remaining cards: ", stdev(rem) )
     
-(mu, sigma) = norm.fit(rem)
+#(mu, sigma) = norm.fit(rem)
 
 n, bins, patches = plt.hist(rem, bins='auto')
-y = mlab.normpdf(bins, mu, sigma)
+y = mlab.normpdf(bins, mean(rem), stdev(rem))
 l =plt.plot(bins, y, 'k--', linewidth=2)
 
 plt.title('Histogram of cards remaining')
