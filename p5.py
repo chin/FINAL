@@ -12,7 +12,7 @@ from scipy.stats import norm
 import matplotlib.mlab as mlab
 
 
-N = 1000 #number of simulations
+N = 10000 #number of simulations
 
 cards_rem = []
 n = 0
@@ -63,7 +63,7 @@ rem = []
 while n < N:
     x = sim()
     rem.append(x)
-    print(x)
+    #print(x)
     n += 1
 
 rem.sort()
