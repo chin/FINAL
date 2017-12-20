@@ -5,6 +5,8 @@ import math
 import numpy as np
 from statistics import mean
 from statistics import stdev
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
 N = 1000 #number of simulations
@@ -61,15 +63,16 @@ while n < N:
     print(x)
     n += 1
 
-print("got here")
 rem.sort()
 print( "Sample mean of remaining cards: ", mean(rem) )
 print( "Sample standard deviation of remaining cards: ", stdev(rem) )
     
 #N, bins = np.histogram(rem)
-#plt.hist(rem, normed=True, bins='auto')
-#plt.title('Histogram of cards remaining')
-#plt.xlabel('No. Cards Remaining')
-#plt.ylabel('Frequency')
-#plt.grid(True)
-#plt.show()
+#fig = plt.figure()
+plt.hist(rem, normed=True, bins='auto')
+plt.title('Histogram of cards remaining')
+plt.xlabel('No. Cards Remaining')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.savefig('p5.png')
+#plt.close(fig)
