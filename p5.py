@@ -72,9 +72,9 @@ print( "Sample standard deviation of remaining cards: ", stdev(rem) )
     
 (mu, sigma) = norm.fit(rem)
 
-plt.hist(rem, bins='auto')
-y = mlab.normpdf(18, mu, sigma)
-l =plt.plot(18, y, 'r--', linewidth=2)
+n, bins, patches = plt.hist(rem, bins='auto')
+y = mlab.normpdf(bins, mu, sigma)
+l =plt.plot(bins, y, 'r--', linewidth=2)
 
 plt.title('Histogram of cards remaining')
 plt.xlabel('No. Cards Remaining')
